@@ -1,18 +1,23 @@
-import { Image, Text, TouchableOpacity } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Button({
   title,
   buttonStyle = styles.btnYellow,
   onPress,
 }) {
+  const insets = useSafeAreaInsets();
+
   return (
-    <TouchableOpacity
-      style={styles.btnYellow}
-      activeOpacity={0.7}
-      onPress={onPress}
-    >
-      <Text style={styles.textDark}>{title}</Text>
-    </TouchableOpacity>
+    <View style={{ height: insets.bottom, backgroundColor: "#FFD700" }}>
+      <TouchableOpacity
+        style={buttonStyle}
+        activeOpacity={0.7}
+        onPress={onPress}
+      >
+        <Text style={styles.textDark}>{title}</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
