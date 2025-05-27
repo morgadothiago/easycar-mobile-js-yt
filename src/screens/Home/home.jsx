@@ -15,6 +15,9 @@ export default function Home() {
   function handlePessenger() {
     navigation.navigate("Passenger");
   }
+  function handleDriver() {
+    navigation.navigate("Driver");
+  }
 
   return (
     <ImageBackground
@@ -34,9 +37,13 @@ export default function Home() {
         <Text style={styles.subTitle}>Encontre uma carrona para voce</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} activeOpacity={0.9}>
-        <Image source={icons.passenger} style={styles.img} />
-        <Text style={styles.title}>Passageiro</Text>
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.9}
+        onPress={handleDriver}
+      >
+        <Image source={icons.driver} style={styles.img} />
+        <Text style={styles.title}>Motorista</Text>
         <Text style={styles.subTitle}>Encontre uma carrona para voce</Text>
       </TouchableOpacity>
     </ImageBackground>

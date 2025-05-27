@@ -1,7 +1,9 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Home from "../../screens/Home/home";
-import Passenger from "../../screens/passenger";
+
+import DriverScreen from "../../screens/drive";
+import PassengerScreen from "../../screens/passenger";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,7 +17,24 @@ export function MainStack() {
           headerShown: false,
         }}
       />
-      <Stack.Screen name="Passenger" component={Passenger} />
+      <Stack.Screen
+        name="Passenger"
+        component={PassengerScreen}
+        options={{
+          headerShadowVisible: false,
+          headerTitle: "",
+          headerTransparent: true,
+        }}
+      />
+      <Stack.Screen
+        name="Driver"
+        component={DriverScreen}
+        options={{
+          headerShadowVisible: false,
+          headerTitle: "",
+          headerTransparent: true,
+        }}
+      />
     </Stack.Navigator>
   );
 }

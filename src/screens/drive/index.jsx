@@ -3,7 +3,7 @@ import Button from "../../components/Button";
 import { styles } from "../../components/Button/styles";
 import { useRoute } from "@react-navigation/native";
 
-export default function PassengerScreen() {
+export default function DriveScreen() {
   const route = useRoute();
   return (
     <SafeAreaView

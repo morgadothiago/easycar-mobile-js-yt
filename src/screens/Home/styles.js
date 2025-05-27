@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    gap: 20,
   },
   logo: {
     width: 200,
@@ -13,7 +14,7 @@ export const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
-    margin: 30,
+    marginHorizontal: 30,
   },
   img: {
     marginTop: 10,
