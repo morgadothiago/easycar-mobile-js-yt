@@ -3,7 +3,7 @@ import { HeaderBackButton } from "@react-navigation/elements";
 
 import Home from "../../screens/Home/home";
 
-import DriverScreen from "../../screens/drive";
+import DriverScreen from "../../screens/passenger copy";
 import PassengerScreen from "../../screens/passenger";
 
 const Stack = createNativeStackNavigator();

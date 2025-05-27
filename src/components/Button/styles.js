@@ -6,7 +6,6 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#F7D600",
-    height: 50,
   },
   btnRed: {
     width: "100%",
@@ -19,6 +18,7 @@ export const styles = StyleSheet.create({
     color: "#000",
     fontSize: 16,
     fontWeight: "bold",
-    marginBottom: 10,
+    flexDirection: "column",
+    marginVertical: 10,
   },
 });

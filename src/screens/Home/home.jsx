@@ -1,51 +1,91 @@
 import {
-  Image,
-  ImageBackground,
+  Keyboard,
+  KeyboardAvoidingView,
   Text,
-  TouchableOpacity,
+  TextInput,
+  TouchableWithoutFeedback,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Button from "../../components/Button";
 import icons from "../../constants/icnons.js";
-import { styles } from "./styles.js";
-import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 
-export default function Home() {
-  const navigation = useNavigation();
+import MapView, { Marker, PROVIDER_DEFAULT } from "react-native-maps";
 
-  function handlePessenger() {
-    navigation.navigate("Passenger");
-  }
-  function handleDriver() {
-    navigation.navigate("Driver");
-  }
+import { styles } from "./styles";
+import { useState } from "react";
+
+export default function PassengerScreen() {
+  const [myLocation, setMyLocation] = useState(null);
 
   return (
-    <ImageBackground
-      source={icons.bg}
-      resizeMode="cover"
-      style={styles.ImageBackGround}
-    >
-      <Image source={icons.logo} style={styles.logo} />
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <SafeAreaView style={styles.container}>
+        <MapView
+          style={styles.map}
+          initialRegion={{
+            latitude: -23.55052,
+            longitude: -46.633308,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+          provider={PROVIDER_DEFAULT}
+        >
+          <Marker
+            coordinate={{
+              latitude: -23.55052,
+              longitude: -46.633308,
+            }}
+            title={"Você está aqui"}
+            description={"Sua localização atual"}
+            pinColor={"#00ff000"}
+            image={icons.location}
+            style={styles.marker}
+          />
+        </MapView>
+        <KeyboardAvoidingView behavior="padding">
+          <View style={styles.footer}>
+            <View style={styles.footerFields}>
+              <View style={styles.footerText}>
+                <Text>Encontre a sua carona</Text>
+              </View>
+              <Text>Origem</Text>
+              <View style={styles.inputContainer}>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Digite sua origem"
+                  placeholderTextColor={"#fff"}
+                />
+                <Ionicons
+                  name="location-outline"
+                  size={24}
+                  color="#F7D600"
+                  style={{ position: "absolute", right: 10, top: 15 }}
+                />
+              </View>
+            </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        activeOpacity={0.9}
-        onPress={handlePessenger}
-      >
-        <Image source={icons.passenger} style={styles.img} />
-        <Text style={styles.title}>Passageiro</Text>
-        <Text style={styles.subTitle}>Encontre uma carrona para voce</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.button}
-        activeOpacity={0.9}
-        onPress={handleDriver}
-      >
-        <Image source={icons.driver} style={styles.img} />
-        <Text style={styles.title}>Motorista</Text>
-        <Text style={styles.subTitle}>Encontre uma carrona para voce</Text>
-      </TouchableOpacity>
-    </ImageBackground>
+            <View style={styles.footerFields}>
+              <Text>Destino</Text>
+              <View>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Digite seu destino"
+                  placeholderTextColor={"#fff"}
+                />
+                <Ionicons
+                  name="location-sharp"
+                  size={24}
+                  color="#F7D600"
+                  style={{ position: "absolute", right: 10, top: 15 }}
+                />
+              </View>
+            </View>
+          </View>
+        </KeyboardAvoidingView>
+        <Button title="CONFIRMA" />
+      </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 }

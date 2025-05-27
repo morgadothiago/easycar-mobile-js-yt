@@ -1,12 +1,12 @@
 import {
   Keyboard,
   KeyboardAvoidingView,
+  SafeAreaView,
   Text,
   TextInput,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../../components/Button";
 import icons from "../../constants/icnons.js";
 import { Ionicons } from "@expo/vector-icons";
@@ -21,7 +21,7 @@ export default function PassengerScreen() {
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <MapView
           style={styles.map}
           initialRegion={{
@@ -83,9 +83,10 @@ export default function PassengerScreen() {
               </View>
             </View>
           </View>
+
+          <Button title="CONFIRMA" />
         </KeyboardAvoidingView>
-        <Button title="CONFIRMA" />
-      </SafeAreaView>
+      </View>
     </TouchableWithoutFeedback>
   );
 }

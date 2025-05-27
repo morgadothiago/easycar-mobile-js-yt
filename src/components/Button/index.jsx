@@ -10,7 +10,7 @@ export default function Button({
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={{ height: insets.bottom, backgroundColor: "#FFD700" }}>
+    <View style={{ height: 50, backgroundColor: "#FFD700" }}>
       <TouchableOpacity
         style={buttonStyle}
         activeOpacity={0.7}
